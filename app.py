@@ -1,9 +1,8 @@
 import requests
 import time
 from bs4 import BeautifulSoup
-from db.database import create_tables, SessionLocal
+from db.database import create_tables
 from db.crud import save_to_db
-from db.models import Television
 
 start_url = 'https://onoff.ee/et/35-televiisorid'
 

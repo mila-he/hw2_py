@@ -22,14 +22,14 @@
 
 {% if products %}
     <h2>Tulemused:</h2>
-    <ul>
+    <ol>
         {% for product in products %}
             <li>
                 <strong>{{ product.name }}</strong> - {{ product.price }} -
                 <a href="{{ product.image }}" target="_blank">Vaata pilti</a>
             </li>
         {% endfor %}
-    </ul>
+    </ol>
 {% elif min_price %}
     <p>Nii kallist telerit? {{ min_price }} € - ei leitud.</p>
 {% endif %}

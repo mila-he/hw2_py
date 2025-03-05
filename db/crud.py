@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from db.database import SessionLocal, create_tables
+from db.database import SessionLocal
 from db.models import Television
 
 def save_to_db(data):
@@ -17,7 +17,7 @@ def save_to_db(data):
             new_tv = Television(name=data['name'], price=data['price'], image=data['image'])
             db.add(new_tv)
             db.commit()
-            print(f"Salvestatud: {data['name']}")
+            # print(f"Salvestatud: {data['name']}")
     except Exception as e:
         db.rollback()
         print("Viga salvestamisel:", e)

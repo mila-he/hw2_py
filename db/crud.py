@@ -5,6 +5,10 @@ from db.models import Television
 def save_to_db(data):
     db: Session = SessionLocal()
     try:
+        # Teisenda hind float-iks
+        price = data['price'].replace('€', '').replace(',', '.').strip()
+        data['price'] = float(price)
+
         # Kontrollime, kas sama nimega toode on juba olemas
         existing = db.query(Television).filter_by(name=data['name']).first()
         if existing:

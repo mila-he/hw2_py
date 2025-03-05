@@ -16,3 +16,8 @@ Base = declarative_base()
 # Tabelite loomine
 def create_tables():
     Base.metadata.create_all(bind=engine)
+
+
+#  Uueks kraapimiseks (Drop Database)
+def drop_database():
+    Base.metadata.drop_all(bind=engine)

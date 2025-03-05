@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <title>Telerid</title>
+</head>
+<body>
+<h1>Teleri otsing</h1>
+
+<form method="get" action="/filter">
+    <label>Miinimum hind: </label>
+    <input type="number" name="min_price" step="0.01" placeholder="Sisesta summa">
+    <button type="submit">Otsi</button>
+</form>
+
+<!-- Kustuta andmebaas ja kraabi uuesti -->
+<form action="/drop" method="get" style="margin-top: 20px;">
+    <button type="submit" onclick="return confirm('Oled kindel, et soovid andmebaasi tühjendada?')">
+        Kraabi uuesti (Drop tvTable)
+    </button>
+</form>
+
+{% if products %}
+    <h2>Tulemused:</h2>
+    <ul>
+        {% for product in products %}
+            <li>
+                <strong>{{ product.name }}</strong> - {{ product.price }} -
+                <a href="{{ product.image }}" target="_blank">Vaata pilti</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% elif min_price %}
+    <p>Nii kallist telerit? {{ min_price }} € - ei leitud.</p>
+{% endif %}
+
+</body>
+</html>
